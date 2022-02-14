@@ -15,7 +15,7 @@ const Accordion = ({item}) => {
         </div>  
       {isActive && <div className="news-content">
           
-          {item.content}</div>}
+          {item.description}</div>}
     </div>
   );
 };

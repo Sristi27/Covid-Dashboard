@@ -37,7 +37,7 @@ export const CountryList = () => {
               <td>Count</td>
             </tr>
           </thead>
-          {/* <div style={{ height: "2px" }} /> */}
+          <div style={{ height: "2px" }} />
           <tbody>
             {countryList.map((item) => {
               return (

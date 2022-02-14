@@ -31,12 +31,12 @@ const World = () => {
     fetchAPI();
   }, []);
 
-  return <div>
-     <div className="cards">
+  return (
+  <div className="cards">
       {totalStat.map((data) => {
         return <Cards data={data} key={data.title} />;
       })}</div>
-  </div>;
+  )
 };
 
 export default World;

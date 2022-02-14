@@ -26,14 +26,7 @@ const News = () => {
       <div id="news-block">
         {articles && articles.map((item) => {
           return (
-            <Accordion item={item}/>
-            // <div key={item.content} id="news-item">
-            //   <div id="news-heading">
-            //     <div id="news-title">{item.title}</div>
-            //     <div id="news-img"><img src={item.image}/></div>
-            //   </div> 
-            //   <div>{item.description}</div>
-            // </div>
+            <Accordion item={item}/> 
           );
         })}
       </div>
