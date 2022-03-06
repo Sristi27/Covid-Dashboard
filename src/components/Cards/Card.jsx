@@ -6,7 +6,8 @@ const Cards = (data) => {
   return (
     <div className="card-container">
       <h3 className="title">{title}</h3>
-      <h2 className="num" style={{color:`${colour}`}} >{value}</h2>
+      <h2 className="num" style={{color:`${colour}`}}>
+        {value}</h2>
     </div>
   );
 };

@@ -4,6 +4,9 @@ import "./country.css";
 
 export const CountryList = () => {
   const [countryList, setCountryList] = useState([]);
+  const [filteredCountryList, setFilteredCountryList] = useState([]);
+  const [name, setName] = useState("");
+  const searchForCountry = () => {};
 
   useEffect(() => {
     const fetchCountryList = async () => {
@@ -18,16 +21,32 @@ export const CountryList = () => {
             deaths: data.recovered.value,
           };
           setCountryList((countryList) => [...countryList, newCountry]);
+          setFilteredCountryList((filteredCountryList) => [
+            ...filteredCountryList,
+            newCountry,
+          ]);
         }
       });
     };
     fetchCountryList();
   }, []);
 
+  useEffect(() => {
+    console.log(name);
+    const newCountryList = countryList.filter(
+      (con) => con.name.toLowerCase().search(name.toLowerCase()) !== -1
+    );
+    setFilteredCountryList(newCountryList);
+  }, [name]);
+
   return (
     <div className="country-container">
       <div id="search-bar">
-        <input placeholder = "Search for country"></input>
+        <input
+          placeholder="Search for country"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        ></input>
       </div>
       <div id="countryDiv">
         <table>
@@ -39,16 +58,16 @@ export const CountryList = () => {
           </thead>
           <div style={{ height: "2px" }} />
           <tbody>
-            {countryList.map((item) => {
+            {filteredCountryList.map((item) => {
               return (
-                <tr key={item.name} style={{marginBottom:'40px'}}>
+                <tr key={item.name} style={{ marginBottom: "40px" }}>
                   <td>{item.name}</td>
                   <td>{item.confirmed}</td>
                 </tr>
               );
             })}
           </tbody>
-        </table> 
+        </table>
       </div>
     </div>
   );
